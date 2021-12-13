@@ -1,43 +1,39 @@
 import React from 'react'
+import { useContext } from 'react/cjs/react.development';
+import { TodosContext } from '../contex/TodosContex';
 
-import PropTypes from 'prop-types';
+function TodoFilters() {
+     const {todosFiltered, filter, setFilter} = useContext(TodosContext);
 
-TodoFilters.propTypes = {
-     todosFiltered:  PropTypes.func.isRequired,
-     filter:  PropTypes.string.isRequired,
-     setFilter:  PropTypes.func.isRequired,
-};
-
-function TodoFilters(props) {
      return (
           <div>
                <button 
                     onClick={() => {
-                         props.setFilter('all')
-                         props.todosFiltered('all')
+                         setFilter('all')
+                         todosFiltered()
                     }}
                
-                    className={`button filter-button ${props.filter === 'all' ? 'filter-button-active' : ' '}`}
+                    className={`button filter-button ${filter === 'all' ? 'filter-button-active' : ' '}`}
                >
                     All
                </button>
                <button 
                     onClick={() => {
-                         props.setFilter('active')
-                         props.todosFiltered('active')
+                         setFilter('active')
+                         todosFiltered()
                     }}
 
-                    className={`button filter-button ${props.filter === 'active' ? 'filter-button-active' : ' '}`}
+                    className={`button filter-button ${filter === 'active' ? 'filter-button-active' : ' '}`}
                     >
                          Active
                </button>
                <button 
                     onClick={() => {
-                         props.setFilter('completed')
-                         props.todosFiltered('completed')
+                         setFilter('completed')
+                         todosFiltered()
                     }}
                
-                    className={`button filter-button ${props.filter === 'completed' ? 'filter-button-active' : ' '}`}
+                    className={`button filter-button ${filter === 'completed' ? 'filter-button-active' : ' '}`}
                          >
                     Completed
                </button>
